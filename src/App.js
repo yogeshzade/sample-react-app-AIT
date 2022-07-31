@@ -2,6 +2,7 @@ import './App.css';
 import FunComp from './Component/FunComp';
 import ClassComp from './Component/ClassComp';
 import Button from './Component/Button';
+import Counter from './Component/Counter';
 function App() {
   return (
     <div className="App">
@@ -11,7 +12,7 @@ function App() {
        <Button value="Add To Cart"/>
        <Button value="Purchase" />
        <Button value="Submit" />
-
+        <Counter />
     </div>
   );
 }
