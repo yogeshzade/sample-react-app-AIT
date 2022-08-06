@@ -5,7 +5,7 @@ class Counter extends Component{
         super(props)
         this.state={
             count:1,
-            maxValue:10,
+            maxValue:20,
             minValue:0
         }
     }
