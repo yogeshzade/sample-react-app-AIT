@@ -1,190 +1,112 @@
-import React from "react";
+import React, { Component } from "react";
 
-function Form() {
-  return (
-    <div>
-      <h1 className="App mt-5 mb-5 text-primary">Contact Form</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <form class="row g-3 needs-validation" novalidate>
-              <div class="col-md-4">
-                <label for="validationCustom01" class="form-label">
-                  First name
-                </label>
+class Form extends Component {
+
+  state ={
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:"",
+    firstNameErr:"",
+    lastNameErr:"",
+    emailErr:"",
+    passwordErr:""
+  }
+
+
+  handleChange=(e)=>{
+    const {name,value} = e.target;
+    this.setState({[name]:value});
+    console.log(this.state)
+  };
+
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    this.validateForm();
+  }
+
+  validateForm=()=>{
+    let firstNameErr="";
+    let lastNameErr="";
+    let emailErr="";
+    let passwordErr="";
+
+    if(this.state.firstName.length<4){
+      firstNameErr = "First Name should be atleast 4 characters";
+    }
+    if(this.state.lastName.length<3){
+      lastNameErr = "Last  Name should be atleast 3 characters";
+    }
+    if(!this.state.email.includes('@')){
+      emailErr="please Enter a valid email";
+    }
+    if(this.state.password.length<5){
+      passwordErr = "password should have at least 5 char";
+    }
+
+
+    if(firstNameErr || lastNameErr || emailErr || passwordErr){
+      this.setState({firstNameErr,lastNameErr,emailErr,passwordErr})
+    }else{
+      this.setState({firstNameErr,lastNameErr,emailErr,passwordErr})
+    }
+      
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <form onSubmit={this.handleSubmit}>
                 <input
                   type="text"
-                  class="form-control"
-                  id="validationCustom01"
-                  value="Mark"
-                  required
+                  name="firstName"
+                  placeholder="FirstName"
+                  class="form-control mb-3"
+                  onChange={this.handleChange}
                 />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustom02" class="form-label">
-                  Last name
-                </label>
+                <p className="text-danger">{this.state.firstNameErr}</p>
                 <input
                   type="text"
-                  class="form-control"
-                  id="validationCustom02"
-                  
-                  required
+                  name="lastName"
+                  placeholder="LastName"
+                  class="form-control mb-3"
+                  onChange={this.handleChange}
                 />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">
-                  Username
-                </label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    @
-                  </span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">
-                  City
-                </label>
+                <p className="text-danger">{this.state.lastNameErr}</p>
+
                 <input
                   type="text"
-                  class="form-control"
-                  id="validationCustom03"
-                  required
+                  name="email"
+                  placeholder="Email"
+                  class="form-control mb-3"
+                  onChange={this.handleChange}
                 />
-                <div class="invalid-feedback">Please provide a valid city.</div>
-              </div>
-              <div class="col-md-3">
-                <label for="validationCustom04" class="form-label">
-                  State
-                </label>
-                <select class="form-select" id="validationCustom04" required>
-                  <option selected disabled value="">
-                    Choose...
-                  </option>
-                  <option>...</option>
-                </select>
-                <div class="invalid-feedback">Please select a valid state.</div>
-              </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
-                  Zip
-                </label>
+                <p className="text-danger">{this.state.emailErr}</p>
+
                 <input
-                  type="text"
-                  class="form-control"
-                  id="validationCustom05"
-                  required
+                  type="password"
+                  name="password"
+                  class="form-control mb-3"
+                  placeholder="Password"
+                  onChange={this.handleChange}
                 />
-                <div class="invalid-feedback">Please provide a valid zip.</div>
-              </div>
-              <div class="col-12">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="invalidCheck"
-                    required
-                  />
-                  <label class="form-check-label" for="invalidCheck">
-                    Agree to terms and conditions
-                  </label>
-                  <div class="invalid-feedback">
-                    You must agree before submitting.
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <button class="btn btn-primary" type="submit">
-                  Submit form
+                <p className="text-danger">{this.state.passwordErr}</p>
+
+                <button type="submit" class="btn btn-primary">
+                  Submit
                 </button>
-              </div>
-            </form>
-            {/* <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleFormControlInput1"
-                placeholder="name@example.com"
-              />
+              </form>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Select Courses</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Gender</label>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Default radio
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  checked
-                />
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Default checked radio
-                </label>
-              </div>
-            </div>
-            <div class="mb-3">
-             
-              <label for="formFile" class="form-label">
-                Uplaod Image
-              </label>
-              <input class="form-control" type="file" id="formFile" />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">
-                Example textarea
-              </label>
-              <textarea
-                class="form-control"
-                id="exampleFormControlTextarea1"
-                rows="3"
-              ></textarea>
-            </div>
-            <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-3">
-                Submit
-              </button>
-            </div> */}
+            <div className="col-md-4"></div>
           </div>
-          <div class="col-md-2"></div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
 export default Form;
