@@ -6,11 +6,13 @@ import Counter from './Component/Counter';
 import Header from './Component/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from './Component/Form';
+import ListsandKeys from './Component/ListsandKeys';
 function App() {
   return (
     <div>
     <Header />
     <Form />
+    <ListsandKeys />
       {/* <h1>Yogesh!</h1> */}
        {/* <FunComp name="Reactjs" duration="3 Months"/>
        <ClassComp location="Nagpur" timing="7am to 8am"/>
