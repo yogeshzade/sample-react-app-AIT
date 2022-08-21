@@ -26,9 +26,9 @@ class TodoClass extends Component {
     return (
       <div class="container">
         <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4 mt-2">
-            <h1>TODO Lists</h1>
+          <div class="col-md-3"></div>
+          <div class="col-md-6 mt-5">
+            <h3>TODO Lists Class Component</h3>
             <div class="field">
             <input
               type="text"
@@ -47,7 +47,7 @@ class TodoClass extends Component {
             </div>
            
           </div>
-          <div class="col-md-4"></div>
+          <div class="col-md-3"></div>
         </div>
       </div>
     );

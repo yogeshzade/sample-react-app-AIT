@@ -9,11 +9,13 @@ import Form from './Component/Form';
 import ListsandKeys from './Component/ListsandKeys';
 import Footer from './Component/Footer';
 import TodoClass from './Component/TodoClass';
+import TodoFunction from './Component/TodoFunction';
 function App() {
   return (
     <div>
     <Header />
     <TodoClass />
+    <TodoFunction />
     <Footer />
     {/* <Form />
     <ListsandKeys /> */}
