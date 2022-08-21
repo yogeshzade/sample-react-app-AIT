@@ -7,12 +7,16 @@ import Header from './Component/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from './Component/Form';
 import ListsandKeys from './Component/ListsandKeys';
+import Footer from './Component/Footer';
+import TodoClass from './Component/TodoClass';
 function App() {
   return (
     <div>
     <Header />
-    <Form />
-    <ListsandKeys />
+    <TodoClass />
+    <Footer />
+    {/* <Form />
+    <ListsandKeys /> */}
       {/* <h1>Yogesh!</h1> */}
        {/* <FunComp name="Reactjs" duration="3 Months"/>
        <ClassComp location="Nagpur" timing="7am to 8am"/>

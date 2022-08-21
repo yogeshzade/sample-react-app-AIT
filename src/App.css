@@ -1,4 +1,28 @@
+body{
+  overflow-y: auto !important;
+}
+
 .App {
   text-align: center;
+}
+
+ul.navbar-nav a {
+  color: #ffffff !important;
+  font-size: 20px;
+  margin-right: 3rem;
+}
+.footer{
+  left: 0;
+  bottom: 0;
+  background-color: #000000;
+  color: white;
+}
+
+ul.footer-links {
+  list-style: circle;
+}
+.footer hr {
+  border-top: 1px solid #ffffff !important;
+  opacity: 1;
 }
 
