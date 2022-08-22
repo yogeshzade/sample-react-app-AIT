@@ -1,30 +1,58 @@
-import React from 'react'
+import React, { useState } from "react";
 
 function TodoFunction() {
+  const [task, setTask] = useState("");
+  const [tasklist, setTaskList] = useState([]);
+
+  const handleChange = (e) => {
+    setTask(e.target.value);
+  };
+
+  const AddTask = () => {
+    //console.log(task);
+    if (task !== "") {
+      const taskDetails = {
+        value: task,
+      };
+     
+      setTaskList([...tasklist, taskDetails]);
+     
+    }
+    
+  };
+ 
   return (
     <div class="container">
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6 mt-5">
-            <h3>TODO Lists Function Component</h3>
-            <div class="field">
-            <input
-              type="text"
-              class="form-control"
-              value=""
-              name="nameofList"
-              placeholder="Add Name"
-            />
-            <button type="button" class="btn btn-primary mt-2 mb-3">Add a Name</button>
-            <ul>
-            </ul>
-            </div>
-           
-          </div>
-          <div class="col-md-3"></div>
-        </div>
-      </div>
-  )
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <input
+        type="text"
+        name="text"
+        class="form-control"
+        onChange={(e) => handleChange(e)}
+        placeholder="Add Name"
+      />
+      <button className="btn btn-success mt-2 mb-3" onClick={AddTask}>
+        Add a Name
+      </button>
+
+    {tasklist !==[] ? 
+    
+    <ul>
+        {tasklist.map(t=>(
+            <li>{t.value}</li>
+        ))}
+    </ul>
+    
+    : null}
+
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+      
+    </div>
+  );
 }
 
-export default TodoFunction
+export default TodoFunction;
