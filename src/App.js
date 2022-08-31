@@ -10,12 +10,30 @@ import ListsandKeys from './Component/ListsandKeys';
 import Footer from './Component/Footer';
 import TodoClass from './Component/TodoClass';
 import TodoFunction from './Component/TodoFunction';
+import CounterFuncComp from './Component/CounterFuncComp';
+import UseRef from './Component/UseRef';
+import React, { useContext } from 'react';
+import ComponentC from './Component/UseContext/ComponentC';
+import ComponentB from './Component/UseContext/ComponentB';
+import UseReducer from './Component/UseReducer';
+
+export const UserContext=React.createContext();
+
+
+
 function App() {
   return (
     <div>
     <Header />
     <TodoClass />
     <TodoFunction />
+    <CounterFuncComp />
+    <UseRef />
+
+    <UserContext.Provider value={"Yogesh"}>
+      <ComponentB />
+    </UserContext.Provider>
+    <UseReducer />
     <Footer />
     {/* <Form />
     <ListsandKeys /> */}
